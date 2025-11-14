@@ -60,10 +60,12 @@ public class Main extends Story {
         explain.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cnt < 5 && many) {
+                    JOptionPane.showMessageDialog(Main.this, playExplain());
                     System.out.println(playExplain());
                     cnt++;
                 }
                 else if (many) {
+                    JOptionPane.showMessageDialog(Main.this, "너무 많이 입력하였습니다.");
                     System.out.println("너무 많이 입력하였습니다.");
                     many = false;
                 }

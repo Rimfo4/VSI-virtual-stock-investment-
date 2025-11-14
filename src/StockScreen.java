@@ -186,6 +186,7 @@ public class StockScreen extends Story implements ActionListener{
             public void actionPerformed(ActionEvent e){
                 if(coinBoolean(-stockPrice[stockSelectNum]*stockCnt)){
                     System.out.println(stockName[stockSelectNum]+"주식의 "+stockCnt+"주를 매수했습니다.");
+                    stockThenPrice[stockSelectNum] = stockPrice[stockSelectNum];
                     //주 매수
                     stockBonus(stockSelectNum, stockCnt);
                 }

@@ -7,7 +7,6 @@ import java.awt.event.ItemListener;
 
 public class SelectStory extends Story{
     boolean checkFlag = false;
-    JPanel selectStoryPanel = new JPanel();
     JTextArea storyBlock_1 = new JTextArea();
     JTextArea storyBlock_2 = new JTextArea();
     ButtonGroup bg = new ButtonGroup();
@@ -34,41 +33,41 @@ public class SelectStory extends Story{
         storyBlock_1.setFont(f3);
         //storyBlock_1.setOpaque(false);
         storyBlock_1.setEditable(false);
-        selectStoryPanel.add(storyBlock_1);
+        add(storyBlock_1);
 
         storyBlock_2.setBounds(20, 350, 1050, 150);
         storyBlock_2.setText(story[randomNum2]);
         storyBlock_2.setFont(f3);
         //storyBlock_2.setOpaque(false);
         storyBlock_2.setEditable(false);
-        selectStoryPanel.add(storyBlock_2);
+        add(storyBlock_2);
 
         //선택 버튼 블럭
         selectStoryButton1.setBounds(1100,150, 100, 100);
         selectStoryButton1.setText("시나리오 1");
         selectStoryButton1.setFont(new Font("나눔고딕",Font.BOLD,15));
-        selectStoryPanel.add(selectStoryButton1);
+        add(selectStoryButton1);
 
         selectStoryButton2.setBounds(1100,350, 100, 100);
         selectStoryButton2.setText("시나리오 2");
         selectStoryButton2.setFont(new Font("나눔고딕",Font.BOLD,15));
-        selectStoryPanel.add(selectStoryButton2);
+        add(selectStoryButton2);
 
         //다음 화면
         nextScreen.setFont(f2);
         nextScreen.setBounds(500, 500, 180, 50);
         nextScreen.setForeground(Color.blue);
-        selectStoryPanel.add(nextScreen);
+        add(nextScreen);
 
         pickStory.setBounds(500, 100, 300, 50);
-        selectStoryPanel.add(pickStory);
+        add(pickStory);
 
         bg.add(selectStoryButton1);
         bg.add(selectStoryButton2);
+
+        setLayout(null);
+        checkDay();
         checkCoin();
-        selectStoryPanel.setBounds(0,0,1280,720);
-        selectStoryPanel.setLayout(null);
-        add(selectStoryPanel);
         setting();
         EventLists();
 
@@ -108,7 +107,7 @@ public class SelectStory extends Story{
                         pickStory.setFont(f3);
                         pickStory.setForeground(Color.BLUE);
                         checkFlag = true;
-                        selectStoryPanel.add(pickStory);
+                        add(pickStory);
                         setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
                     }
                 }

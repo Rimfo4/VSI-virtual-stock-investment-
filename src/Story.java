@@ -43,6 +43,10 @@ public abstract class Story extends JFrame{
     // 주식 수량
     static int[] stockItem = new int[7];
 
+    // 구매 당시 주가
+    static double[] stockThenPrice = new double[7];
+
+    // 주가 구매
     static void stockBonus(int stockSelectNum, int stockCnt){
         stockItem[stockSelectNum] += stockCnt;
     }
@@ -83,33 +87,32 @@ public abstract class Story extends JFrame{
     }
 
     // 보유한 자금 라벨
-    static JLabel nowCoin;
+    JLabel nowCoin = new JLabel(getCoin()+"C");
 
     //자금 새로고침
     void reloadCoin(){
-        nowCoin.setText("보유 코인 : " + getCoin()+"C");
+        nowCoin.setText(getCoin()+"C");
     }
 
     //자금 라벨
     void checkCoin(){
-        nowCoin = new JLabel("보유 코인 : " + getCoin()+"C");
         nowCoin.setFont(new Font("나눔고딕",Font.BOLD,20));
         nowCoin.setForeground(Color.orange);
-        nowCoin.setBounds(1050, 40, 300, 50);
+        nowCoin.setBounds(1120, 80, 300, 30);
         nowCoin.repaint();
         add(nowCoin);
     }
-
     //날짜
     static int Day = 1;
+
+    JLabel nowDay = new JLabel(Day +" 일차");
     void checkDay(){
-        JLabel nowDay = new JLabel(Day +" 일차");
         nowDay.setFont(new Font("나눔고딕",Font.BOLD,50));
-        nowDay.setBounds(1120, 0, 300, 50);
+        nowDay.setBounds(1120, 5, 300, 60);
         add(nowDay);
     }
     void dayPlus(){
-
+        Day++;
     }
 
     //렌덤
@@ -139,6 +142,8 @@ public abstract class Story extends JFrame{
     void setting(){
         this.setSize(1280,720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
