@@ -62,8 +62,4 @@ public class Home extends Story{
             }
         }));
     }
-
-    public static void main(String[] args) {
-        new Home();
-    }
 }

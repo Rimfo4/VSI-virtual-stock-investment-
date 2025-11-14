@@ -15,10 +15,9 @@ public class SelectStory extends Story{
     JLabel pickStory = new JLabel();
     JButton nextScreen = new JButton("다음 화면");
 
-    int randomNum1  = (int)(randomNum(0, 3));// 매개변수 max에 story.length 값 보내기
-    int randomNum2  = (int)(randomNum(0, 3));// 매개변수 max에 story.length 값 보내기
+    int randomNum1  = (int)(randomNum(0, story.length));
+    int randomNum2  = (int)(randomNum(0, story.length));
     SelectStory(){
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //랜덤 수에 맞는 story[] 인덱스를 선택해서 시나리오 storyBlock_1, storyBlock_2를 설정해야한다.
 
         System.out.println("----------시나리오 1번----------");
@@ -31,14 +30,14 @@ public class SelectStory extends Story{
         storyBlock_1.setBounds(20, 150, 1050, 150);
         storyBlock_1.setText(story[randomNum1]);
         storyBlock_1.setFont(f3);
-        //storyBlock_1.setOpaque(false);
+        storyBlock_1.setOpaque(false);
         storyBlock_1.setEditable(false);
         add(storyBlock_1);
 
         storyBlock_2.setBounds(20, 350, 1050, 150);
         storyBlock_2.setText(story[randomNum2]);
         storyBlock_2.setFont(f3);
-        //storyBlock_2.setOpaque(false);
+        storyBlock_2.setOpaque(false);
         storyBlock_2.setEditable(false);
         add(storyBlock_2);
 
@@ -59,7 +58,7 @@ public class SelectStory extends Story{
         nextScreen.setForeground(Color.blue);
         add(nextScreen);
 
-        pickStory.setBounds(500, 100, 300, 50);
+        pickStory.setBounds(450, 100, 400, 50);
         add(pickStory);
 
         bg.add(selectStoryButton1);
@@ -80,8 +79,8 @@ public class SelectStory extends Story{
                     new StockScreen();
                 }
                 else {
-                    pickStory.setText("시나리오를 선택해야합니다");
-                    pickStory.setFont(f3);
+                    pickStory.setText("시나리오를 선택해야합니다!");
+                    pickStory.setFont(f2);
                     pickStory.setForeground(Color.BLUE);
                 }
             }
@@ -91,7 +90,7 @@ public class SelectStory extends Story{
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(selectStoryButton1.isSelected()){
                         pickStory.setText("시나리오 1 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
-                        pickStory.setFont(f3);
+                        pickStory.setFont(f2);
                         pickStory.setForeground(Color.BLUE);
                         checkFlag = true;
                         setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
@@ -104,7 +103,7 @@ public class SelectStory extends Story{
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(selectStoryButton2.isSelected()){
                         pickStory.setText("시나리오 2 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
-                        pickStory.setFont(f3);
+                        pickStory.setFont(f2);
                         pickStory.setForeground(Color.BLUE);
                         checkFlag = true;
                         add(pickStory);
