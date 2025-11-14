@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class Part2 extends Story {
     JLabel stockTitle = new JLabel("주식 종류");
-    JLabel[] stock = new JLabel[7];
-    JButton nextP3 = new JButton("다음으로");
+    JLabel[] stockList = new JLabel[7];
+    JButton nextP3 = new JButton("다음 화면");
 
     int x = 150;
     int y = 150;
@@ -17,33 +17,36 @@ public class Part2 extends Story {
         add(stockTitle);
 
         //주식 배치
-        for(int i = 0; i < stock.length; i++){
-            stock[i] = new JLabel();
-            stock[i].setText(Main.stockName[i]);
-            stock[i].setFont(f2);
-            stock[i].setForeground(Color.BLACK);
-            stock[i].setBounds(x,y,300,40);
+        for(int i = 0; i < stockList.length; i++){
+            stockList[i] = new JLabel();
+            stockList[i].setText(stockName[i]);
+            stockList[i].setFont(f2);
+            stockList[i].setForeground(Color.BLACK);
+            stockList[i].setBounds(x,y,300,40);
             if(i == 4) x = 150;
             else x += 200;
             y += i == 4 ? 100 : 0;
-            add(stock[i]);
+            add(stockList[i]);
         }
 
-        nowMoney.setFont(f1);
-        nowMoney.setBounds(300, 500, 500, 50);
-        add(nowMoney);
-
         nextP3.setFont(f2);
-        nextP3.setBounds(800, 500, 300, 50);
+        nextP3.setBounds(800, 500, 200, 50);
+        nextP3.setForeground(Color.blue);
+        EventLists(1);
         add(nextP3);
-        nextP3.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                new SelectStory();
-                setVisible(false);
-            }
-        });
 
+        checkCoin();
         this.setLayout(null);
         setting();
+    }
+    void EventLists(int key){
+        if(key == 1) {
+            nextP3.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new SelectStory();
+                    setVisible(false);
+                }
+            });
+        }
     }
 }

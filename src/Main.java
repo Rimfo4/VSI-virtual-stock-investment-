@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class Main extends Story {
     JPanel mainPane = new JPanel();
     JButton explain = new JButton("설명창");
-    JLabel choJM = new JLabel();
     JButton gameStart = new JButton("게임시작!");
+    JLabel choJM = new JLabel();
     JLabel menuName = new JLabel("!가상주식게임!");
 
     int cnt = 0;
@@ -40,12 +40,14 @@ public class Main extends Story {
         choJM.setText("개발자 : 1416_조정모");
         choJM.setFont(f2);
         choJM.setForeground(Color.DARK_GRAY);
-        choJM.setBounds(900,600, 400, 40);
+        choJM.setBounds(950,630, 400, 40);
         mainPane.add(choJM);
 
         mainPane.setLayout(null);
         setting();
         this.add(mainPane);
+
+        coinPlus(500);
     }
     void EventLists(int key){
         //게임시작 버튼 누르면 2번째 창 이동
@@ -62,11 +64,10 @@ public class Main extends Story {
             explain.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if (cnt < 5 && many) {
-                        System.out.println("가상주식게임은 1주일 동안 총 7번 주식을 매도,매수 할 수 있습니다.\n하루마다 시나리오 2개가 창에 띄워집니다.");
-                        System.out.println("시나리오를 하나를 선택하면, 선택한 시나리오에 맞게 주가가 변동됩니다.");
-                        System.out.println("열심히해서 부자가 되어보십시오\n");
+                        System.out.println(playExplain());
                         cnt++;
-                    } else if (many) {
+                    }
+                    else if (many) {
                         System.out.println("너무 많이 입력하였습니다.");
                         many = false;
                     }
