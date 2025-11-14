@@ -8,9 +8,11 @@ public class Main extends Story {
     JButton explain = new JButton("설명창");
     JButton gameStart = new JButton("게임시작!");
     JLabel choJM = new JLabel();
-    JLabel menuName = new JLabel("!가상주식게임!");
+
     ImageIcon icon = new ImageIcon("imgs/VSITitle.png");
-    JLabel titleImg = new JLabel(icon);
+    Image image = icon.getImage();
+    ImageIcon realIcon = new ImageIcon(image.getScaledInstance(500, 300, Image.SCALE_SMOOTH));
+    JLabel titleImg = new JLabel(realIcon);
     int cnt = 0;
     boolean many = true;
 
@@ -18,25 +20,20 @@ public class Main extends Story {
         //처음 화면
         setTitle("@@가상주식게임@@");
 
-        //게임 제목
-        menuName.setBounds(450,50, 350, 70);
-        menuName.setFont(f1);
-        mainPane.add(menuName);
-
         //타이틀 이미지
-        titleImg.setBounds(520, 200, 400, 400);
+        titleImg.setBounds(400, 20, 500, 300);
         mainPane.add(titleImg);
 
         //게임시작 버튼
-        gameStart.setFont(f2);
+        gameStart.setFont(f1);
         gameStart.setForeground(Color.RED);
-        gameStart.setBounds(300,400, 200, 140);
+        gameStart.setBounds(280,400, 280, 140);
         mainPane.add(gameStart);
 
         //설명창 버튼
-        explain.setFont(f2);
+        explain.setFont(f1);
         explain.setForeground(Color.blue);
-        explain.setBounds(600,400, 200, 140);
+        explain.setBounds(720,400, 280, 140);
         mainPane.add(explain);
 
         //개발자 이름
