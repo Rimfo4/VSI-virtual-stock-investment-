@@ -1,9 +1,6 @@
-import javax.swing.*;
+public class HaveStock extends Story{
 
-public class Home extends Story{
-    JLabel title = new JLabel();
-
-    Home(){
+    HaveStock(){
 
         checkDay();
         checkCoin();

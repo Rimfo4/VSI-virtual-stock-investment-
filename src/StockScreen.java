@@ -8,7 +8,6 @@ public class StockScreen extends Story implements ActionListener{
     JLabel[] nowStockPrice = new JLabel[7];
     JButton[] stockSelectButton = new JButton[7];
     JLabel stockSelectLabel= new JLabel();
-
     JButton stockCountCheck = new JButton("확인");
     JTextField stockCount = new JTextField("수량 입력");
     JButton nextScreen = new JButton("다음 화면");
@@ -109,9 +108,8 @@ public class StockScreen extends Story implements ActionListener{
 
         //다음 화면
         nextScreen.setFont(f2);
-        nextScreen.setBounds(1050, 600, 180, 50);
+        nextScreen.setBounds(1050, 600, 170, 50);
         nextScreen.setForeground(Color.blue);
-
         add(nextScreen);
 
         EventLists();
@@ -124,32 +122,32 @@ public class StockScreen extends Story implements ActionListener{
     public void actionPerformed(ActionEvent e){
         switch(e.getActionCommand()){
             case "0" ->{
-                stockSelectLabel.setText("엠비디아 주식 수량을 입력해주세요.");
                 stockSelectNum = 0;
+                stockSelectLabel.setText("갖고 있는 엠비디아 주 : "+stockItem[stockSelectNum]);
             }
             case "1" -> {
-                stockSelectLabel.setText("테술라 주식 수량을 입력해주세요.");
                 stockSelectNum = 1;
+                stockSelectLabel.setText("갖고 있는 테술라 주 : "+stockItem[stockSelectNum]);
             }
             case "2" -> {
-                stockSelectLabel.setText("넹슨 주식 수량을 입력해주세요.");
                 stockSelectNum = 2;
+                stockSelectLabel.setText("갖고 있는 넹슨 주 : "+stockItem[stockSelectNum]);
             }
             case "3" -> {
-                stockSelectLabel.setText("사성전자 주식 수량을 입력해주세요.");
                 stockSelectNum = 3;
+                stockSelectLabel.setText("갖고 있는 사성전자 주 : "+stockItem[stockSelectNum]);
             }
             case "4" -> {
-                stockSelectLabel.setText("파인애플 주식 수량을 입력해주세요.");
                 stockSelectNum = 4;
+                stockSelectLabel.setText("갖고 있는 파인애플 주 : "+stockItem[stockSelectNum]);
             }
             case "5" -> {
-                stockSelectLabel.setText("넷폴릭스 주식 수량을 입력해주세요.");
                 stockSelectNum = 5;
+                stockSelectLabel.setText("갖고 있는 넷폴릭스 주 : "+stockItem[stockSelectNum]);
             }
             case "6" -> {
-                stockSelectLabel.setText("켈로그 주식 수량을 입력해주세요.");
                 stockSelectNum = 6;
+                stockSelectLabel.setText("갖고 있는 켈로그 주 : "+stockItem[stockSelectNum]);
             }
         }
         stockCount.setVisible(true);
