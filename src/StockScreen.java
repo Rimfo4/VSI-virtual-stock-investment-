@@ -13,6 +13,7 @@ public class StockScreen extends Story implements ActionListener{
     JButton nextScreen = new JButton("다음 화면");
     int stockCnt = 0;
     int stockSelectNum = 0;
+
     StockScreen(){
         //"300, 210, 40, 120, 240, 170, 90"
         switch(getStory()){
@@ -42,6 +43,105 @@ public class StockScreen extends Story implements ActionListener{
                 stockPrice[4] += randomNormal();
                 stockPrice[5] += randomNormal();
                 stockPrice[6] += randomNum(-20, -10);
+            }
+            case 3 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNum(19, 27);
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNum(10, 15);
+            }
+            case 4 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNum(-18, -11);
+                stockPrice[4] += randomNum(20, 30);
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNormal();
+            }
+            case 5 ->{
+                stockPrice[0] += randomNum(20, 25);
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNum(30, 35);
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNum(-18, -12);
+                stockPrice[6] += randomNormal();
+            }
+            case 6 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNum(-18, -14);
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNum(-21, -10);
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNormal();
+            }
+            case 7 ->{
+                stockPrice[0] += randomNum(9, 14);
+                stockPrice[1] += randomNum(12, 23);
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNum(23, 27);
+                stockPrice[6] += randomNormal();
+            }
+            case 8 ->{
+                stockPrice[0] += randomNum(-27, -19);
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNum(-8, -6);
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNum(12, 17);
+            }
+            case 9 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNum(17, 21);
+                stockPrice[4] += randomNum(15, 23);
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNormal();
+            }
+            case 10 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNum(23, 31);
+                stockPrice[2] += randomNum(19, 25);
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNum(27, 32);
+                stockPrice[6] += randomNormal();
+            }
+            case 11 ->{
+                stockPrice[0] += randomNum(-48, -37);
+                stockPrice[1] += randomNum(-36, -28);
+                stockPrice[2] += randomNum(-26, -19);
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNormal();
+            }
+            case 12 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNum(16, 20);
+                stockPrice[2] += randomNum(14, 21);
+                stockPrice[3] += randomNormal();
+                stockPrice[4] += randomNormal();
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNormal();
+            }
+            case 13 ->{
+                stockPrice[0] += randomNormal();
+                stockPrice[1] += randomNormal();
+                stockPrice[2] += randomNormal();
+                stockPrice[3] += randomNum(-21, -17);
+                stockPrice[4] += randomNum(-26, -20);
+                stockPrice[5] += randomNormal();
+                stockPrice[6] += randomNum(-15, -13);
             }
         }
 

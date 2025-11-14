@@ -15,27 +15,37 @@ public class SelectStory extends Story{
     JLabel pickStory = new JLabel();
     JButton nextScreen = new JButton("다음 화면");
 
-    int randomNum1  = (int)(randomNum(0, story.length));
-    int randomNum2  = (int)(randomNum(0, story.length));
+    int[] randomNum = new int[2];
     SelectStory(){
         //랜덤 수에 맞는 story[] 인덱스를 선택해서 시나리오 storyBlock_1, storyBlock_2를 설정해야한다.
+        randomNum[0] = (int)(randomNum(0, story.length));
+        while(storyCheckBoolean[randomNum[0]]) randomNum[0] = (int)(randomNum(0, story.length));
+        storyCheckBoolean[randomNum[0]] = true;
 
+        randomNum[1] = (int)(randomNum(0, story.length));
+        while(storyCheckBoolean[randomNum[1]]) randomNum[1] = (int)(randomNum(0, story.length));
+        storyCheckBoolean[randomNum[1]] = true;
+
+        //시나리오 출력
         System.out.println("----------시나리오 1번----------");
-        System.out.println(story[randomNum1]); //story[]배열을 랜덤 수에 맞는 인덱스 방을 출력
+        System.out.println(story[randomNum[0]]); //story[]배열을 랜덤 수에 맞는 인덱스 방을 출력
+        storyCheckBoolean[randomNum[0]] = true;
         System.out.println();
+
         System.out.println("----------시나리오 2번----------");
-        System.out.println(story[randomNum2]);//story[]배열을 랜덤 수에 맞는 인덱스 방을 출력
+        System.out.println(story[randomNum[1]]); //story[]배열을 랜덤 수에 맞는 인덱스 방을 출력
+        storyCheckBoolean[randomNum[1]] = true;
 
         //시나리오 블럭
         storyBlock_1.setBounds(20, 150, 1050, 150);
-        storyBlock_1.setText(story[randomNum1]);
+        storyBlock_1.setText(story[randomNum[0]]);
         storyBlock_1.setFont(f3);
         storyBlock_1.setOpaque(false);
         storyBlock_1.setEditable(false);
         add(storyBlock_1);
 
         storyBlock_2.setBounds(20, 350, 1050, 150);
-        storyBlock_2.setText(story[randomNum2]);
+        storyBlock_2.setText(story[randomNum[1]]);
         storyBlock_2.setFont(f3);
         storyBlock_2.setOpaque(false);
         storyBlock_2.setEditable(false);
@@ -93,7 +103,7 @@ public class SelectStory extends Story{
                         pickStory.setFont(f2);
                         pickStory.setForeground(Color.BLUE);
                         checkFlag = true;
-                        setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
+                        setStory(randomNum[0]);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
                     }
                 }
             }
@@ -107,7 +117,7 @@ public class SelectStory extends Story{
                         pickStory.setForeground(Color.BLUE);
                         checkFlag = true;
                         add(pickStory);
-                        setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
+                        setStory(randomNum[1]);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
                     }
                 }
             }
