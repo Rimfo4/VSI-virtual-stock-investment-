@@ -10,6 +10,7 @@ public class Part2 extends Story {
 
     int x = 150;
     int y = 150;
+
     Part2(){
         //주식 종류
         stockTitle.setFont(f1);

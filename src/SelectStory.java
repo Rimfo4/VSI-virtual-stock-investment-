@@ -47,20 +47,17 @@ public class SelectStory extends Story{
         selectStoryButton1.setBounds(1100,150, 100, 100);
         selectStoryButton1.setText("시나리오 1");
         selectStoryButton1.setFont(new Font("나눔고딕",Font.BOLD,15));
-        EventLists(2);
         selectStoryPanel.add(selectStoryButton1);
 
         selectStoryButton2.setBounds(1100,350, 100, 100);
         selectStoryButton2.setText("시나리오 2");
         selectStoryButton2.setFont(new Font("나눔고딕",Font.BOLD,15));
-        EventLists(3);
         selectStoryPanel.add(selectStoryButton2);
 
         //다음 화면
         nextScreen.setFont(f2);
         nextScreen.setBounds(500, 500, 180, 50);
         nextScreen.setForeground(Color.blue);
-        EventLists(1);
         selectStoryPanel.add(nextScreen);
 
         pickStory.setBounds(500, 100, 300, 50);
@@ -73,50 +70,49 @@ public class SelectStory extends Story{
         selectStoryPanel.setLayout(null);
         add(selectStoryPanel);
         setting();
+        EventLists();
 
     }
-    void EventLists(int key){
-        switch(key) {
-            case 1 -> nextScreen.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    if(checkFlag){
-                        setVisible(false);
-                        new StockScreen();
-                    }
-                    else {
-                        pickStory.setText("시나리오를 선택해야합니다");
+    void EventLists(){
+        nextScreen.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(checkFlag){
+                    setVisible(false);
+                    new StockScreen();
+                }
+                else {
+                    pickStory.setText("시나리오를 선택해야합니다");
+                    pickStory.setFont(f3);
+                    pickStory.setForeground(Color.BLUE);
+                }
+            }
+        });
+        selectStoryButton1.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e){
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(selectStoryButton1.isSelected()){
+                        pickStory.setText("시나리오 1 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
                         pickStory.setFont(f3);
                         pickStory.setForeground(Color.BLUE);
+                        checkFlag = true;
+                        setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
                     }
                 }
-            });
-            case 2 -> selectStoryButton1.addItemListener(new ItemListener(){
-                public void itemStateChanged(ItemEvent e){
-                    if(e.getStateChange() == ItemEvent.SELECTED){
-                        if(selectStoryButton1.isSelected()){
-                            pickStory.setText("시나리오 1 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
-                            pickStory.setFont(f3);
-                            pickStory.setForeground(Color.BLUE);
-                            checkFlag = true;
-                            setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
-                        }
+            }
+        });
+        selectStoryButton2.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e){
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(selectStoryButton2.isSelected()){
+                        pickStory.setText("시나리오 2 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
+                        pickStory.setFont(f3);
+                        pickStory.setForeground(Color.BLUE);
+                        checkFlag = true;
+                        selectStoryPanel.add(pickStory);
+                        setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
                     }
                 }
-            });
-            case 3 -> selectStoryButton2.addItemListener(new ItemListener(){
-                public void itemStateChanged(ItemEvent e){
-                    if(e.getStateChange() == ItemEvent.SELECTED){
-                        if(selectStoryButton2.isSelected()){
-                            pickStory.setText("시나리오 2 선택");     //story[]배열을 랜덤 수에 맞는 인덱스 방을 대입
-                            pickStory.setFont(f3);
-                            pickStory.setForeground(Color.BLUE);
-                            checkFlag = true;
-                            selectStoryPanel.add(pickStory);
-                            setStory(randomNum1);                   //story[]배열을 랜덤 수에 맞는 인덱스으로 전달
-                        }
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 }

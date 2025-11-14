@@ -26,14 +26,12 @@ public class Main extends Story {
         gameStart.setFont(f2);
         gameStart.setForeground(Color.RED);
         gameStart.setBounds(520,200, 200, 140);
-        EventLists(1);
         mainPane.add(gameStart);
 
         //설명창 버튼
         explain.setFont(f2);
         explain.setForeground(Color.blue);
         explain.setBounds(520,400, 200, 140);
-        EventLists(2);
         mainPane.add(explain);
 
         //개발자 이름
@@ -46,34 +44,31 @@ public class Main extends Story {
         mainPane.setLayout(null);
         setting();
         this.add(mainPane);
+        EventLists();
 
-        coinPlus(500);
+        coinBonus(500);
     }
-    void EventLists(int key){
+    void EventLists(){
         //게임시작 버튼 누르면 2번째 창 이동
-        if(key == 1) {
-            gameStart.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    new Part2();
-                    setVisible(false);
-                }
-            });
-        }
+        gameStart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Part2();
+                setVisible(false);
+            }
+        });
         //설명창 누르면 설명
-        if(key == 2) {
-            explain.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    if (cnt < 5 && many) {
-                        System.out.println(playExplain());
-                        cnt++;
-                    }
-                    else if (many) {
-                        System.out.println("너무 많이 입력하였습니다.");
-                        many = false;
-                    }
+        explain.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (cnt < 5 && many) {
+                    System.out.println(playExplain());
+                    cnt++;
                 }
-            });
-        }
+                else if (many) {
+                    System.out.println("너무 많이 입력하였습니다.");
+                    many = false;
+                }
+            }
+        });
     }
     public static void main(String[] args) {
         new Main();

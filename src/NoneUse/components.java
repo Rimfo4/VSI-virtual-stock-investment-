@@ -1,3 +1,5 @@
+package NoneUse;
+
 import javax.swing.*;
 
 public class components {
