@@ -100,6 +100,9 @@ public abstract class Story extends JFrame{
     JButton stockBuyButton = new JButton("매수");
     JButton stockSellButton = new JButton("매도");
 
+    //타이머 (시간 지연 등)
+    Timer t1;
+
     //폰트
     Font f1 = new Font("나눔고딕",Font.BOLD,50);
     Font f2 = new Font("나눔고딕",Font.BOLD,30);
@@ -170,6 +173,13 @@ public abstract class Story extends JFrame{
     //날짜
     static int Day = 1;
 
+    //7일차 끝났는 지 체크용
+    boolean toEndDay(){
+        if(Day == 8) return true;
+        else return false;
+    }
+
+    //날짜 라벨
     JLabel nowDay = new JLabel(Day +" 일차");
     void checkDay(){
         nowDay.setFont(new Font("나눔고딕",Font.BOLD,50));

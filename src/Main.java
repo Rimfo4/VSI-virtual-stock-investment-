@@ -54,8 +54,12 @@ public class Main extends Story {
         //게임시작 버튼 누르면 2번째 창 이동
         gameStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Part2();
-                setVisible(false);
+                t1 = new Timer(250, a->{
+                    new Part2();
+                    setVisible(false);
+                });
+                t1.setRepeats(false);
+                t1.start();
             }
         });
         //설명창 누르면 설명

@@ -67,8 +67,12 @@ public class Part2 extends Story implements ActionListener{
     void EventLists(){
         nextP3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new SelectStory();
-                setVisible(false);
+                t1 = new Timer(250, a->{
+                    new SelectStory();
+                    setVisible(false);
+                });
+                t1.setRepeats(false);
+                t1.start();
             }
         });
     }

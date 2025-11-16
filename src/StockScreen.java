@@ -13,6 +13,7 @@ public class StockScreen extends Story implements ActionListener{
     JButton nextScreen = new JButton("다음 화면");
     int stockCnt = 0;
     int stockSelectNum = 0;
+    JDialog loadPopup = new JDialog(StockScreen.this, "로딩 중", false);
 
     StockScreen(){
         //"300, 210, 40, 120, 240, 170, 90"
@@ -212,6 +213,11 @@ public class StockScreen extends Story implements ActionListener{
         nextScreen.setForeground(Color.blue);
         add(nextScreen);
 
+        loadPopup.setSize(250, 100);
+        loadPopup.setLocationRelativeTo(StockScreen.this);
+        loadPopup.setLayout(new BorderLayout());
+        loadPopup.add(new JLabel("시스템 처리 중입니다...", SwingConstants.CENTER), BorderLayout.CENTER);
+
         EventLists();
         checkDay();
         checkCoin();
@@ -259,8 +265,13 @@ public class StockScreen extends Story implements ActionListener{
         nextScreen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Home();
-                setVisible(false);
+                t1 = new Timer(250, after->{
+                    new Home();
+                    setVisible(false);
+                });
+                t1.setRepeats(false);
+                t1.start();
+
             }
         });
         stockCountCheck.addActionListener(new ActionListener() {
@@ -284,34 +295,49 @@ public class StockScreen extends Story implements ActionListener{
         stockBuyButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if(coinBoolean(-stockPrice[stockSelectNum]*stockCnt)){
-                    System.out.println(stockName[stockSelectNum]+"주식의 "+stockCnt+"주를 매수했습니다.");
-                    stockThenPrice[stockSelectNum] = stockPrice[stockSelectNum];
-                    //주 매수
-                    stockBonus(stockSelectNum, stockCnt);
-                }
-                else{
-                    JOptionPane.showMessageDialog(StockScreen.this, "보유한 코인이 부족합니다.");
-                }
-                //화면에 코인 새로고침
-                reloadCoin();
-                nowCoin.repaint();
+                loadPopup.setVisible(true);
+
+                t1 = new Timer(1500, after -> {
+                    loadPopup.setVisible(false);
+                    if (coinBoolean(-stockPrice[stockSelectNum] * stockCnt)) {
+                        JOptionPane.showMessageDialog(StockScreen.this, stockName[stockSelectNum] + "주식의 " + stockCnt + "주를 매수했습니다.", "매수 완료!",JOptionPane.PLAIN_MESSAGE);
+                        stockThenPrice[stockSelectNum] = stockPrice[stockSelectNum];
+                        //주 매수
+                        stockBonus(stockSelectNum, stockCnt);
+                    } else {
+                        JOptionPane.showMessageDialog(StockScreen.this, "보유한 코인이 부족합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+                    }
+                    //화면에 코인 새로고침
+                    reloadCoin();
+                    nowCoin.repaint();
+                });
+                //한번만 실행
+                t1.setRepeats(false);
+                t1.start();
             }
         });
         stockSellButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if(stockBoolean(stockSelectNum, stockCnt)){
-                    System.out.println(stockName[stockSelectNum]+"주식의 "+stockCnt+"주를 매도했습니다.");
-                    //코인 추가
-                    coinBonus(stockPrice[stockSelectNum]*stockCnt);
-                }
-                else{
-                    JOptionPane.showMessageDialog(StockScreen.this, "보유한 주식이 부족합니다.");
-                }
-                //화면에 코인 새로고침
-                reloadCoin();
-                nowCoin.repaint();
+                loadPopup.setVisible(true);
+
+                t1 = new Timer(1500, after -> {
+                    loadPopup.setVisible(false);
+                    if (stockBoolean(stockSelectNum, stockCnt)) {
+                        JOptionPane.showMessageDialog(StockScreen.this, stockName[stockSelectNum] + "주식의 " + stockCnt + "주를 매도했습니다.", "매도 완료!",JOptionPane.PLAIN_MESSAGE);
+                        //코인 추가
+                        coinBonus(stockPrice[stockSelectNum] * stockCnt);
+                    } else {
+                        JOptionPane.showMessageDialog(StockScreen.this, "보유한 주식이 부족합니다.", "오류", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    //화면에 코인 새로고침
+                    reloadCoin();
+                    nowCoin.repaint();
+                });
+                // 한번만 실행
+                t1.setRepeats(false);
+                t1.start();
             }
         });
     }

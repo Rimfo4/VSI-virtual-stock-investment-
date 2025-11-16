@@ -57,8 +57,20 @@ public class Home extends Story{
             @Override
             public void actionPerformed(ActionEvent e){
                 dayPlus();
-                new SelectStory();
-                setVisible(false);
+                t1 = new Timer(250, after->{
+                    //8일차 인지 체크용
+                    if(toEndDay()) {
+                        new End();
+                        setVisible(false);
+                    }
+                    else{
+                        new SelectStory();
+                        setVisible(false);
+                    }
+                });
+                t1.setRepeats(false);
+                t1.start();
+
             }
         }));
     }

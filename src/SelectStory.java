@@ -85,8 +85,12 @@ public class SelectStory extends Story{
         nextScreen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(checkFlag){
-                    setVisible(false);
-                    new StockScreen();
+                    t1 = new Timer(250, a->{
+                        new StockScreen();
+                        setVisible(false);
+                    });
+                    t1.setRepeats(false);
+                    t1.start();
                 }
                 else {
                     pickStory.setText("시나리오를 선택해야합니다!");
