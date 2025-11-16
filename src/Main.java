@@ -54,6 +54,10 @@ public class Main extends Story {
         //게임시작 버튼 누르면 2번째 창 이동
         gameStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                player = JOptionPane.showInputDialog("사용자님의 이름은 무엇인가요?");
+                while(player == null || player.equals("")){
+                    player = JOptionPane.showInputDialog("이름을 알려주셔야 합니다!");
+                }
                 t1 = new Timer(250, a->{
                     new Part2();
                     setVisible(false);

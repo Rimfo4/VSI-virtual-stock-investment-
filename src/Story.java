@@ -87,6 +87,9 @@ public abstract class Story extends JFrame{
                 "드러났습니다. 빠른 시일 내에 법적 조치를 받을 예정입니다.\n" +
                 "&&&기업이 광고에 나온 식품과 다르게 과도한 질소 포장으로 소비자 기만으로 신고를 받았다고 합니다.";
     }
+    //사용자 이름
+    static String player = "123456789";
+
     //시나리오 중복 체크
     static boolean[] storyCheckBoolean = new boolean[14];
 
@@ -114,9 +117,13 @@ public abstract class Story extends JFrame{
     // 구매 당시 주가
     static double[] stockThenPrice = new double[7];
 
+    static int stockTotal = 0;      //총 주가 구매 량
+    static double coinTotal = 0;    //총 코인 량
+
     // 주가 구매
     static void stockBonus(int stockSelectNum, int stockCnt){
         stockItem[stockSelectNum] += stockCnt;
+        stockTotal++;
     }
 
     // 보유한 주식이 입력한 주가 보다 많은지 체크용 메소드
@@ -136,9 +143,13 @@ public abstract class Story extends JFrame{
     //코인 보너스
     static void coinBonus(double c){
         Coin += c;
+        if(c > 0){
+            coinTotal += c;
+        }
     }
     // 보유한 코인이 입력한 코인보다 많은지 체크용
     static boolean coinBoolean(double c){
+
         //매수 할 때는 c가 음수로 들어오기에 절댓값으로 비교
         if(getCoin() <= Math.abs(c)) {
             return false;

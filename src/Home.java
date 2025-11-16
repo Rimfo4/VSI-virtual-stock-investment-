@@ -57,7 +57,7 @@ public class Home extends Story{
             @Override
             public void actionPerformed(ActionEvent e){
                 dayPlus();
-                t1 = new Timer(250, after->{
+                t1 = new Timer(750, after->{
                     //8일차 인지 체크용
                     if(toEndDay()) {
                         new End();
